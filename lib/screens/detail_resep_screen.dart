@@ -36,10 +36,11 @@ class _DetailResepScreenState extends State<DetailResepScreen> {
   Widget build(BuildContext context) {
     //  final res = Provider.of<ResepDetailProvider>(context,listen: false).showDetailResep(widget.id);
     //  print(res);
-    int counter = 0;
+    
     return Scaffold(
+      
       appBar: AppBar(
-        title: Text("${widget.title}"),
+        title: Text("${widget.title}"), 
       ),
       body: Consumer<ResepProvider>(
         builder: (context, resepProvider, child) {
@@ -77,10 +78,36 @@ class _DetailResepScreenState extends State<DetailResepScreen> {
                         "Level Pengerjaan : ${resepProvider.detailResepModel.results!.dificulty}"),
                     SizedBox(height: 10.0),
                     Text(
-                        "Penulis : ${resepProvider.detailResepModel.results!.author}"),
+                        "Penulis : ${resepProvider.detailResepModel.results!.author!.user}"),
+                        SizedBox(height: 10.0),
+                    Text(
+                        "Penulis : ${resepProvider.detailResepModel.results!.author!.datePublished}"),
                     SizedBox(height: 10.0),
+                    
                     Text(
                         "Deskripsi : ${resepProvider.detailResepModel.results!.desc}"),
+                    SizedBox(height: 10.0),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: resepProvider.detailResepModel.results!.needItem!.length ,
+                      itemBuilder: (context, index){
+                        return Column(
+                          children: [
+                            Text("${resepProvider.detailResepModel.results!.needItem![index].itemName!}"),
+                            Image.network("${resepProvider.detailResepModel.results!.needItem![index].thumbItem!}"),
+                          ],
+                        );
+                      },
+                    ),
+                    SizedBox(height: 10.0),
+                    Text(
+                        "Bahan-Bahan : ${resepProvider.detailResepModel.results!.ingredient}"),
+                        
+                    SizedBox(height: 10.0),
+                    Text(
+                        "STEP : "),
+                    Text("${resepProvider.detailResepModel.results!.step}"),
+                    
                   ],
                 ),
               ),

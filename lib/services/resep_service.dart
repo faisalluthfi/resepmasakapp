@@ -17,6 +17,7 @@ class ResepService{
     .get('https://masak-apa-tomorisakura.vercel.app/api/recipe/$key');
     print(key);
     print("response : $response");
+    
     return DetailResepModel.fromJson(response.data);
   }
 }
