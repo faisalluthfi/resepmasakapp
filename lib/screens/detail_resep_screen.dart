@@ -13,34 +13,14 @@ class DetailResepScreen extends StatefulWidget {
 }
 
 class _DetailResepScreenState extends State<DetailResepScreen> {
-//  final ResepDetailProvider _detailprovider = ResepDetailProvider();
-  @override
-  void initState() {
-    // _detailprovider.setId(widget.id);
-    // _provider.id = widget.id;
-    // print(_provider.id);
-    // _provider.ShowDetailResep(widget.id);
-    // print(widget.id);
-    // Provider.of<ResepDetailProvider>(context,listen: false).showDetailResep();
-    super.initState();
-  }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    // _provider.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-    //  final res = Provider.of<ResepDetailProvider>(context,listen: false).showDetailResep(widget.id);
-    //  print(res);
-    
     return Scaffold(
-      
       appBar: AppBar(
         title: Text("${widget.title}"), 
+        backgroundColor: Colors.green,
       ),
       body: Consumer<ResepProvider>(
         builder: (context, resepProvider, child) {
@@ -48,28 +28,37 @@ class _DetailResepScreenState extends State<DetailResepScreen> {
             child: Card(
               elevation: 20,
               child: Padding(
-                padding: const EdgeInsets.all(18),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.network(
                         "${resepProvider.detailResepModel.results!.thumb}"),
-                    Text(
-                      "${resepProvider.detailResepModel.results!.title}",
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      decoration: BoxDecoration(
+                    
+                        borderRadius: BorderRadius.circular(5.0),
+                        boxShadow: [
+                          BoxShadow(color: Colors.green,spreadRadius: 3),
+                          
+                        ]
+                      ),
+                      child: Text(
+                        "${resepProvider.detailResepModel.results!.title}",
+                        style: GoogleFonts.montserrat(
+                        textStyle: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white
+                        ),
+                      ),
                       ),
                     ),
                     SizedBox(height: 10.0),
                     Text(
                       "Porsi : ${resepProvider.detailResepModel.results!.servings}",
-                      // style: GoogleFonts.montserrat(
-                        // textStyle: TextStyle(
-                          // fontSize: 20,
-                        ),
-                      // ),
-                    // ),
+                      
+                    ),
                     SizedBox(height: 10.0),
                     Text(
                         "Lama Pengerjaan : ${resepProvider.detailResepModel.results!.times}"),
