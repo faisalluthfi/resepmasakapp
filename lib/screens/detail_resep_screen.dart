@@ -34,9 +34,9 @@ class _DetailResepScreenState extends State<DetailResepScreen> {
                   children: [
                     Image.network(
                         "${resepProvider.detailResepModel.results!.thumb}"),
+                        SizedBox(height: 10.0),
                     Container(
                       decoration: BoxDecoration(
-                    
                         borderRadius: BorderRadius.circular(5.0),
                         boxShadow: [
                           BoxShadow(color: Colors.green,spreadRadius: 3),
